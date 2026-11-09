@@ -1,2 +1,80 @@
-<h1>Hello, Gemini613!</h1>
-<p>这是我的第一个个人网页。</p>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini 的梦幻小宇宙</title>
+    <style>
+        /* 页面整体设置 */
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%); /* 梦幻粉紫蓝渐变 */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Comic Sans MS', 'Nunito', '微软雅黑', sans-serif; /* 活泼圆润的字体 */
+            overflow: hidden;
+            color: #fff;
+        }
+
+        /* 主标题样式与弹跳动画 */
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: bounce 2s infinite ease-in-out; /* 呼吸弹跳效果 */
+        }
+
+        /* 副标题气泡框 */
+        p {
+            font-size: 1.2rem;
+            background: rgba(255, 255, 255, 0.4);
+            padding: 15px 30px;
+            border-radius: 30px; /* 圆角气泡 */
+            backdrop-filter: blur(5px); /* 毛玻璃效果 */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            letter-spacing: 1px;
+        }
+
+        /* 漂浮元素的设置 */
+        .floating {
+            position: absolute;
+            font-size: 2.5rem;
+            opacity: 0.8;
+            animation: float 6s infinite ease-in-out;
+        }
+
+        /* 各个元素的初始位置和延迟时间 */
+        .f1 { top: 15%; left: 15%; animation-delay: 0s; }
+        .f2 { top: 25%; right: 20%; animation-delay: 1.5s; }
+        .f3 { bottom: 20%; left: 25%; animation-delay: 3s; }
+        .f4 { bottom: 15%; right: 15%; animation-delay: 4.5s; }
+
+        /* 定义呼吸弹跳动画 */
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* 定义漂浮旋转动画 */
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-25px) rotate(15deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- 漂浮的可爱元素 -->
+    <div class="floating f1">✨</div>
+    <div class="floating f2">🦄</div>
+    <div class="floating f3">☁️</div>
+    <div class="floating f4">🌈</div>
+
+    <!-- 核心内容 -->
+    <h1>欢迎来到 Gemini 的小宇宙 🌟</h1>
+    <p>澄净纯澈剔透玲珑空灵悠扬恣意......</p>
+</body>
+</html>
