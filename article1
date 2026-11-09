@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>清欢渡 - Gemini's Dreamscape</title>
+    <title>盼君清思 - Gemini's Dreamscape</title>
     <style>
         body {
             background-color: #faf8f5;
@@ -20,6 +20,7 @@
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
             margin-top: 40px;
+            backdrop-filter: blur(15px);
         }
         h1 {
             font-weight: 300;
@@ -33,16 +34,14 @@
         p {
             margin-bottom: 20px;
             font-size: 1.1rem;
-            text-align: justify; /* 两端对齐，让长段落更整齐 */
+            text-align: justify;
             color: #4a4a4a;
         }
-        /* 首段特殊处理：稍微大一点，加一点强调 */
         p:first-of-type {
             font-size: 1.15rem;
             font-weight: 500;
             color: #333;
         }
-        /* 返回首页的按钮样式 */
         .back-btn {
             display: inline-block;
             margin-bottom: 20px;
@@ -52,10 +51,7 @@
             letter-spacing: 0.1em;
             transition: color 0.3s;
         }
-        .back-btn:hover {
-            color: #b5a3c9;
-        }
-        /* 时间戳 */
+        .back-btn:hover { color: #b5a3c9; }
         .date {
             color: #999;
             font-size: 0.9rem;
@@ -66,17 +62,14 @@
     </style>
 </head>
 <body>
-    <!-- 返回按钮 -->
-    <a href="index.html" class="back-btn">← 返回首页</a>
+    <a href="articles.html" class="back-btn">← 返回随笔列表</a>
 
     <div class="article-container">
-        <!-- 文章标题 -->
-        <h1>盼君清思</h1>
+        <h1>清欢渡</h1>
         
-        <!-- 发布时间 -->
-        <div class="date">记于 2026年11月10日</div>
+        <div class="date">2026年11月10日</div>
         
-        <!-- 正文内容，已将你的随笔分段 -->
+        <!-- 你的完整原文 -->
         <p>拖延是惰性的积分，闭塞即主观忽视的累加，酿就的一切恶果源于那一次次的不经意。</p>
         
         <p>日常疲倦难悟心流，羡艳周围无数丰绩，感慨今日垂垂老矣，心魄大不如从前，迷惘徘徊触礁碰壁，但又积极穿梭于每一个热梗空间，活跃于每一段午夜时间，沉浸于每一座幻想国度，憧憬于每一片未抵桃源。</p>
