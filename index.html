@@ -3,78 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gemini 的梦幻小宇宙</title>
+    <title>Gemini's Dreamscape</title>
     <style>
-        /* 页面整体设置 */
-        body {
+        /* 基础重置 */
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
             height: 100vh;
-            background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%); /* 梦幻粉紫蓝渐变 */
+            height: 100dvh; /* 适配手机动态视口 */
+            background-color: #faf8f5; /* 奶油白底色，比纯白更有温度 */
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-family: 'Comic Sans MS', 'Nunito', '微软雅黑', sans-serif; /* 活泼圆润的字体 */
+            font-family: "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif;
             overflow: hidden;
-            color: #fff;
+            position: relative;
         }
 
-        /* 主标题样式与弹跳动画 */
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-            animation: bounce 2s infinite ease-in-out; /* 呼吸弹跳效果 */
-        }
-
-        /* 副标题气泡框 */
-        p {
-            font-size: 1.2rem;
-            background: rgba(255, 255, 255, 0.4);
-            padding: 15px 30px;
-            border-radius: 30px; /* 圆角气泡 */
-            backdrop-filter: blur(5px); /* 毛玻璃效果 */
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            letter-spacing: 1px;
-        }
-
-        /* 漂浮元素的设置 */
-        .floating {
+        /* 背景梦幻光晕（极光/液态感） */
+        .aurora {
             position: absolute;
-            font-size: 2.5rem;
+            border-radius: 50%;
+            filter: blur(80px); /* 模糊滤镜，制造柔和光感 */
+            opacity: 0.6;
+            z-index: 0;
+            animation: float 10s infinite alternate ease-in-out;
+        }
+
+        .color-1 {
+            width: 50vw;
+            height: 50vw;
+            max-width: 600px;
+            max-height: 600px;
+            background: #ffd6e0; /* 蜜桃粉 */
+            top: -10%;
+            left: -10%;
+        }
+
+        .color-2 {
+            width: 60vw;
+            height: 60vw;
+            max-width: 700px;
+            max-height: 700px;
+            background: #d4e4ff; /* 晨空蓝 */
+            bottom: -20%;
+            right: -10%;
+            animation-delay: -3s;
+        }
+
+        .color-3 {
+            width: 40vw;
+            height: 40vw;
+            max-width: 500px;
+            max-height: 500px;
+            background: #fef0b3; /* 奶油黄 */
+            top: 40%;
+            left: 30%;
+            animation-delay: -6s;
+        }
+
+        /* 主体内容区（极简毛玻璃卡片） */
+        .container {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 60px 40px;
+            background: rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(20px); /* 高级毛玻璃效果 */
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.03);
+            animation: fadeUp 1.5s ease-out;
+        }
+
+        /* 极简优雅的主标题 */
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem); /* 响应式字体大小 */
+            font-weight: 300; /* 使用细体字，显得高级 */
+            letter-spacing: 0.1em;
+            color: #333333;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        /* 标题旁极细的装饰星芒 ✦ */
+        h1::before, h1::after {
+            content: '✦';
+            font-size: 1.2rem;
+            color: #b5a3c9;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
             opacity: 0.8;
-            animation: float 6s infinite ease-in-out;
+        }
+        h1::before { left: -30px; }
+        h1::after { right: -30px; }
+
+        /* 优雅的副标题 */
+        p {
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            color: #666666;
+            font-weight: 300;
+            letter-spacing: 0.3em; /* 宽字间距，制造呼吸感 */
+            line-height: 2.2;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(0, 0, 0, 0.05); /* 极细分割线 */
         }
 
-        /* 各个元素的初始位置和延迟时间 */
-        .f1 { top: 15%; left: 15%; animation-delay: 0s; }
-        .f2 { top: 25%; right: 20%; animation-delay: 1.5s; }
-        .f3 { bottom: 20%; left: 25%; animation-delay: 3s; }
-        .f4 { bottom: 15%; right: 15%; animation-delay: 4.5s; }
-
-        /* 定义呼吸弹跳动画 */
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
-
-        /* 定义漂浮旋转动画 */
+        /* 平滑的漂浮动画 */
         @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-25px) rotate(15deg); }
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(50px, 30px) scale(1.1); }
+        }
+
+        /* 内容入场动画 */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
 <body>
-    <!-- 漂浮的可爱元素 -->
-    <div class="floating f1">✨</div>
-    <div class="floating f2">🦄</div>
-    <div class="floating f3">☁️</div>
-    <div class="floating f4">🌈</div>
+    <!-- 背景柔和光晕 -->
+    <div class="aurora color-1"></div>
+    <div class="aurora color-2"></div>
+    <div class="aurora color-3"></div>
 
-    <!-- 核心内容 -->
-    <h1>欢迎来到 Gemini 的小宇宙 🌟！</h1>
-    <p>澄净纯澈剔透玲珑空灵悠扬恣意......</p>
+    <!-- 主体内容 -->
+    <div class="container">
+        <h1>Gemini</h1>
+        <p>澄净纯澈 · 剔透玲珑<br>空灵悠扬 · 恣意生长</p>
+    </div>
 </body>
 </html>
